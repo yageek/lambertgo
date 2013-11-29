@@ -92,8 +92,7 @@ func(pt *Point) cartesianToGeographic(meridien float64, a float64, e float64, ep
 	pt.Y = phi_i
 	pt.Z = he
 	pt.Unit = Radian
-}
-
+} 
 func (pt * Point) ToWGS84(zone Zone){
 
 	if pt.Unit != Meter {
