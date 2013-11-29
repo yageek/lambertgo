@@ -1,44 +1,17 @@
 package lambertgo
 
-import (
-	"math"
-)
-
-const (
-	LambertI = iota
-	LambertII = iota
-	LambertIII = iota
-	LambertIV = iota
-	Lambert93 =iota
-)
-
-const (
-	Degree = iota
-	Grad = iota
-	Radian = iota
-)
-
-const (
-	degreeToradian = 180.0/math.Pi
-	radianTodegree = math.Pi/180
-
-	gradTodegree = 180.0/200.0
-	degreeTograd = 200.0/180.0
-
-	gradToradian = 200.0/math.Pi
-	radiantTograd = math.Pi/200.0
-)
-
 type Transform Point
 
+type Zone int32
+
 type Point struct {
-	X float32
-	Y float32
-	Z float32
+	X float64
+	Y float64
+	Z float64
 	Unit int32
 }
 
-func (pt *Point) scale(s float32){
+func (pt *Point) scale(s float64){
 
 	pt.X*= s
 	pt.Y*= s
@@ -54,6 +27,7 @@ func (pt *Point) ToDegree(){
 	default:
 
 	}
+	pt.Unit = Degree
 }
 func (pt *Point) ToGrad(){
 	switch pt.Unit {
@@ -64,6 +38,7 @@ func (pt *Point) ToGrad(){
 	default:
 
 	}
+	pt.Unit = Grad
 }
 
 func (pt *Point) ToRadian(){
@@ -75,4 +50,5 @@ func (pt *Point) ToRadian(){
 	default:
 
 	}
+	pt.Unit = Radian
 }
