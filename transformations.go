@@ -2,6 +2,7 @@
 package lambertgo
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -10,7 +11,7 @@ func latitudeISOFromLatitude(lat float64, e float64) float64{
 	return math.Log10(math.Tan(math.Pi/4+lat/2)*math.Pow((1-e*math.Sin(lat))/(1+e*math.Sin(lat)),e/2));
 }
 
-func latitudefromLatitudeISO( lat_iso float64, e float64, eps float64) float64{
+func latitudeFromLatitudeISO( lat_iso float64, e float64, eps float64) float64{
 
 	phi_0 := 2*math.Atan(math.Exp(lat_iso)) - math.Pi/2
 	phi_i := 2*math.Atan(math.Pow((1+e*math.Sin(phi_0))/(1-e*math.Sin(phi_0)),e/2)*math.Exp(lat_iso)) - math.Pi/2
@@ -33,13 +34,13 @@ func (pt * Point) lambertToGeographic(zone Zone, lon_merid float64,  e float64, 
 	x := pt.X
 	y := pt.Y
 
-	R := math.Sqrt(((x-x_s)*(x-x_s) + (y-y_s)/(y-y_s)))
+	R := math.Sqrt(((x-x_s)*(x-x_s) + (y-y_s)*(y-y_s)))
 	gamma := math.Atan((x-x_s)/(y_s-y))
 
 	lon := lon_merid + gamma/n
 	lat_iso := -1/n*math.Log(math.Abs(R/C))
 
-	lat := latitudefromLatitudeISO(lat_iso,e,eps)
+	lat := latitudeFromLatitudeISO(lat_iso,e,eps)
 
 	pt.X = lon
 	pt.Y = lat
@@ -95,13 +96,19 @@ func(pt *Point) cartesianToGeographic(meridien float64, a float64, e float64, ep
 
 func (pt * Point) ToWGS84(zone Zone){
 
+	if pt.Unit != Meter {
+		fmt.Errorf("Could not transform Point which is not in METER\n")
+		return
+	}
 	if Lambert93 == zone{
 		pt.lambertToGeographic(zone,IERSLongitudeMeridian,EWGS84,DefaultEPS)
+		pt.Unit = Radian
 	} else {
 		pt.lambertToGeographic(zone,ParisLongitudeMeridian,EClarkIGN,DefaultEPS)
+		pt.Unit = Radian
 		pt.geographicToCartesian(AClarkIGN,EClarkIGN)
 
-		pt.X-= 168
+		pt.X-=168
 		pt.Y-=60
 		pt.Z+=320
 

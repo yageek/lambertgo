@@ -12,24 +12,18 @@ var lambertXs = [...]float64{600000.0, 600000.0, 600000.0, 234.358, 600000.0, 70
 var lambertYs = [...]float64{5657616.674, 6199695.768, 6791905.085, 7239161.542, 8199695.768, 12655612.050}
 
 const (
-	LambertI = iota
-	LambertII = iota
-	LambertIII = iota
-	LambertIV = iota
-	Lambert93 =iota
-
+	LambertI = 0
+	LambertII = 1
+	LambertIII = 2
+	LambertIV = 3
+	LambertII_e = 4
+	Lambert93 = 5
+)
+const (
 	Degree = iota
 	Grad = iota
 	Radian = iota
-
-	degreeToradian float64 = 180.0/math.Pi
-	radianTodegree float64 = math.Pi/180
-
-	gradTodegree float64 = 180.0/200.0
-	degreeTograd float64 = 200.0/180.0
-
-	gradToradian float64 = 200.0/math.Pi
-	radiantTograd float64 = math.Pi/200.0
+	Meter = iota
 
 	EClarkIGN float64 = 0.08248325676
 	EWGS84 float64 = 0.08181919106

@@ -1,5 +1,7 @@
 package lambertgo
 
+import "math"
+
 type Transform Point
 
 type Zone int32
@@ -11,6 +13,16 @@ type Point struct {
 	Unit int32
 }
 
+const (
+	degreeToradian float64 = math.Pi/180.0
+	radianTodegree float64 = 180.0/math.Pi
+
+	gradTodegree float64 = 180.0/200.0
+	degreeTograd float64 = 200.0/180.0
+
+	gradToradian float64 = math.Pi/200.0
+	radiantTograd float64 = 200.0/math.Pi
+)
 func (pt *Point) scale(s float64){
 
 	pt.X*= s
