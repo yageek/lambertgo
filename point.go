@@ -2,10 +2,7 @@ package lambertgo
 
 import "math"
 
-type Transform Point
-
-type Zone int32
-
+//Point represents a generic point with three space coordinates and unit
 type Point struct {
 	X float64
 	Y float64
@@ -30,6 +27,7 @@ func (pt *Point) scale(s float64){
 	pt.Z*= s
 }
 
+//ToDegree converts the coordinates from Radian or Grad to Degree
 func (pt *Point) ToDegree(){
 	switch pt.Unit {
 	case Radian:
@@ -41,6 +39,8 @@ func (pt *Point) ToDegree(){
 	}
 	pt.Unit = Degree
 }
+
+//ToGrad converts the coordinates from Degree or Radian to Degree
 func (pt *Point) ToGrad(){
 	switch pt.Unit {
 	case Radian:
@@ -53,6 +53,7 @@ func (pt *Point) ToGrad(){
 	pt.Unit = Grad
 }
 
+//ToRadian converts the coordinates from Degree or Grad to Degree
 func (pt *Point) ToRadian(){
 	switch pt.Unit {
 	case Grad:

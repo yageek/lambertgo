@@ -1,6 +1,7 @@
 package  lambertgo
 
 import (
+	"fmt"
 	"math"
 	"testing"
 )
@@ -143,3 +144,13 @@ func TestGeographicToCartesian(t* testing.T){
 
 
 	}
+
+
+func ExampleToWGS84(){
+
+	var point *Point = &Point{668832.5384,6950138.7285,0,Meter}
+	point.ToWGS84(Lambert93)
+	fmt.Printf("Latitude:%5f - Longitude:%.5f", point.Y, point.X)
+	// Output:
+	// Latitude:0.866549 - Longitude:0.04483
+}

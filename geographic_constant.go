@@ -8,6 +8,10 @@ var lambertC = [...]float64{11603796.98, 11745793.39, 11947992.52, 12136281.99, 
 var lambertXs = [...]float64{600000.0, 600000.0, 600000.0, 234.358, 600000.0, 700000.0}
 var lambertYs = [...]float64{5657616.674, 6199695.768, 6791905.085, 7239161.542, 8199695.768, 12655612.050}
 
+//Constants representing the different lambert zones : Lambert I, Lambert II, LambertIV, Lambert II Extended and Lambert93
+
+type Zone int32
+
 const (
 	LambertI = 0
 	LambertII = 1

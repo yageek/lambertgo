@@ -92,7 +92,10 @@ func(pt *Point) cartesianToGeographic(meridien float64, a float64, e float64, ep
 	pt.Y = phi_i
 	pt.Z = he
 	pt.Unit = Radian
-} 
+}
+
+// ToWGS84 converts coordinates expressed in Meter in the lambert system to Radian in the WGS84 system.
+// It takes the lambert Zone ine parameters
 func (pt * Point) ToWGS84(zone Zone){
 
 	if pt.Unit != Meter {

@@ -4,11 +4,11 @@
 A simple Go package to convert coordinates in Lambert projections system to GPS WGS84 coordinates. It is based on the [IGN alorithms and methods](http://geodesie.ign.fr/contenu/fichiers/documentation/algorithmes/notice/NTG_71.pdf)
 
 # Install
-	go get github.com/yageek/lambertgo
+	go get github.com/YaGeek/lambertgo
 # Usage
 
 ```go
-import lgo "github.com/yageek/lambertgo"
+import lgo "github.com/YaGeek/lambertgo"
 import "fmt"
 
 //Declares origin point and translated point
