@@ -144,6 +144,38 @@ func TestGeographicToCartesian(t* testing.T){
 
 
 	}
+	
+	func TestZenithStrasbourg(t* testing.T){
+		
+		ptOrigin := &Point{994300.623,113409.981,0,Meter}
+		ptExpected := &Point{7.68639475277068, 48.5953456709144, 0,Degree}
+
+		ptOrigin.ToWGS84(LambertI)
+		ptOrigin.ToDegree()
+
+		if  math.Abs(ptOrigin.X - ptExpected.X) > 1e-5{
+			t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f",ptExpected.X,ptOrigin.X)
+		}
+		if  math.Abs(ptOrigin.Y - ptExpected.Y) > 1e-5{
+			t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f",ptExpected.Y,ptOrigin.Y)
+		}
+	}
+	
+	func TestBugLambertIIE(t* testing.T){
+		
+		ptOrigin := &Point{369419,1986498,0,Meter}
+		ptExpected := &Point{-0.579117201473994,44.84071560809383,0,Degree}
+
+		ptOrigin.ToWGS84(LambertII_e)
+		ptOrigin.ToDegree()
+
+		if  math.Abs(ptOrigin.X - ptExpected.X) > 1e-3{
+			t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f",ptExpected.X,ptOrigin.X)
+		}
+		if  math.Abs(ptOrigin.Y - ptExpected.Y) > 1e-3{
+			t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f",ptExpected.Y,ptOrigin.Y)
+		}
+	}
 
 
 func ExampleToWGS84(){
