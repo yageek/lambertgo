@@ -8,7 +8,7 @@ A simple Go package to convert coordinates in Lambert projections system to GPS 
 # Usage
 
 ```go
-import lgo "github.com/YaGeek/lambertgo"
+import lgo "github.com/yageek/lambertgo"
 import "fmt"
 
 //Declares origin point and translated point
