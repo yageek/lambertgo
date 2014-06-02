@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/YaGeek/lambertgo.png?branch=develop)](https://travis-ci.org/YaGeek/lambertgo)
+[![Build Status](https://travis-ci.org/yageek/lambertgo.svg?branch=master)](https://travis-ci.org/yageek/lambertgo)
 
 #Description
 A simple Go package to convert coordinates in Lambert projections system to GPS WGS84 coordinates. It is based on the [IGN alorithms and methods](http://geodesie.ign.fr/contenu/fichiers/documentation/algorithmes/notice/NTG_71.pdf)
