@@ -8,7 +8,7 @@ import (
 
 
 func latitudeISOFromLatitude(lat float64, e float64) float64{
-	return math.Log10(math.Tan(math.Pi/4+lat/2)*math.Pow((1-e*math.Sin(lat))/(1+e*math.Sin(lat)),e/2));
+	return math.Log(math.Tan(math.Pi/4+lat/2)*math.Pow((1-e*math.Sin(lat))/(1+e*math.Sin(lat)),e/2));
 }
 
 func latitudeFromLatitudeISO( lat_iso float64, e float64, eps float64) float64{
