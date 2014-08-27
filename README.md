@@ -2,7 +2,7 @@
 
 
 #Description
-A simple Go package to convert coordinates in Lambert projections system to GPS WGS84 coordinates. It is based on the [IGN alorithms and methods](http://geodesie.ign.fr/contenu/fichiers/documentation/algorithmes/notice/NTG_71.pdf)
+A simple Go package to convert coordinates in Lambert projections system to GPS WGS84 coordinates. It is based on the [IGN algorithms and methods](http://geodesie.ign.fr/contenu/fichiers/documentation/algorithmes/notice/NTG_71.pdf)
 
 # Install
 	go get github.com/YaGeek/lambertgo
