@@ -2,33 +2,34 @@ package lambertgo
 
 import "math"
 
-//Point represents a generic point with three space coordinates and unit
+// Point represents a generic point with three space coordinates and unit.
 type Point struct {
-	X float64
-	Y float64
-	Z float64
+	X    float64
+	Y    float64
+	Z    float64
 	Unit int32
 }
 
 const (
-	degreeToradian float64 = math.Pi/180.0
-	radianTodegree float64 = 180.0/math.Pi
+	degreeToradian float64 = math.Pi / 180.0
+	radianTodegree float64 = 180.0 / math.Pi
 
-	gradTodegree float64 = 180.0/200.0
-	degreeTograd float64 = 200.0/180.0
+	gradTodegree float64 = 180.0 / 200.0
+	degreeTograd float64 = 200.0 / 180.0
 
-	gradToradian float64 = math.Pi/200.0
-	radiantTograd float64 = 200.0/math.Pi
+	gradToradian  float64 = math.Pi / 200.0
+	radiantTograd float64 = 200.0 / math.Pi
 )
-func (pt *Point) scale(s float64){
 
-	pt.X*= s
-	pt.Y*= s
-	pt.Z*= s
+func (pt *Point) scale(s float64) {
+
+	pt.X *= s
+	pt.Y *= s
+	pt.Z *= s
 }
 
-//ToDegree converts the coordinates from Radian or Grad to Degree
-func (pt *Point) ToDegree(){
+// ToDegree converts the coordinates from Radian or Grad to Degree.
+func (pt *Point) ToDegree() {
 	switch pt.Unit {
 	case Radian:
 		pt.scale(radianTodegree)
@@ -40,8 +41,8 @@ func (pt *Point) ToDegree(){
 	pt.Unit = Degree
 }
 
-//ToGrad converts the coordinates from Degree or Radian to Degree
-func (pt *Point) ToGrad(){
+// ToGrad converts the coordinates from Degree or Radian to Degree.
+func (pt *Point) ToGrad() {
 	switch pt.Unit {
 	case Radian:
 		pt.scale(radiantTograd)
@@ -53,8 +54,8 @@ func (pt *Point) ToGrad(){
 	pt.Unit = Grad
 }
 
-//ToRadian converts the coordinates from Degree or Grad to Degree
-func (pt *Point) ToRadian(){
+// ToRadian converts the coordinates from Degree or Grad to Degree.
+func (pt *Point) ToRadian() {
 	switch pt.Unit {
 	case Grad:
 		pt.scale(gradToradian)
