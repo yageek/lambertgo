@@ -57,4 +57,4 @@ const (
 
 // DefaultEPS is the comparison margin
 // used in the different algorithms.
-var DefaultEPS float64 = 1e-10
+var DefaultEPS = 1e-10
