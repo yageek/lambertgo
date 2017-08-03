@@ -193,10 +193,10 @@ func TestToLambertIToWGS84(t *testing.T) {
 	point.ToWGS84(LambertI)
 	point.ToDegree()
 	if math.Abs(point.X-pointTest.X) > 1e-3 {
-		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, pointTest.X)
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
 	}
 	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
-		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, pointTest.Y)
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
 	}
 }
 
@@ -209,10 +209,10 @@ func TestToLambertIIToWGS84(t *testing.T) {
 	point.ToWGS84(LambertII)
 	point.ToDegree()
 	if math.Abs(point.X-pointTest.X) > 1e-3 {
-		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, pointTest.X)
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
 	}
 	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
-		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, pointTest.Y)
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
 	}
 }
 
@@ -225,10 +225,10 @@ func TestToLambertIIIToWGS84(t *testing.T) {
 	point.ToWGS84(LambertIII)
 	point.ToDegree()
 	if math.Abs(point.X-pointTest.X) > 1e-3 {
-		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, pointTest.X)
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
 	}
 	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
-		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, pointTest.Y)
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
 	}
 }
 
@@ -241,10 +241,10 @@ func TestToLambertIVToWGS84(t *testing.T) {
 	point.ToWGS84(LambertIV)
 	point.ToDegree()
 	if math.Abs(point.X-pointTest.X) > 1e-3 {
-		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, pointTest.X)
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
 	}
 	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
-		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, pointTest.Y)
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
 	}
 }
 
@@ -257,10 +257,10 @@ func TestToLambertIIEToWGS84(t *testing.T) {
 	point.ToWGS84(LambertIIE)
 	point.ToDegree()
 	if math.Abs(point.X-pointTest.X) > 1e-3 {
-		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, pointTest.X)
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
 	}
 	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
-		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, pointTest.Y)
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
 	}
 }
 
@@ -273,10 +273,10 @@ func TestToLambert93ToWGS84(t *testing.T) {
 	point.ToWGS84(Lambert93)
 	point.ToDegree()
 	if math.Abs(point.X-pointTest.X) > 1e-3 {
-		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, pointTest.X)
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
 	}
 	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
-		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, pointTest.Y)
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
 	}
 }
 

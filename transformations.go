@@ -131,7 +131,6 @@ func (pt *Point) ToWGS84(zone Zone) {
 		pt.Z += 320
 
 		pt.cartesianToGeographic(GreenwichLongitudeMeridian, AWGS84, EWGS84, DefaultEPS)
-
 	}
 }
 
