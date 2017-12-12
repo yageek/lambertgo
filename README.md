@@ -19,7 +19,7 @@ go get gopkg.in/yageek/lambertgo.v1
 import lgo "github.com/yageek/lambertgo"
 import "fmt"
 
-//Declares origin point and translated point
+//Declares origin point
 var point *lgo.Point= &lgo.Point{994272.661,113467.422,0,lgo.Meter}
 
 //Converts pointOrg in Lambert Zone 1 to WGS84 - Results in Radian
@@ -29,4 +29,21 @@ point.ToWGS84(lgo.LambertI)
 point.ToDegree()
 
 fmt.Printf("Latitude:%.5f - Longitude:%.5f",point.Y,point.X)
+```
+
+```go
+import lgo "github.com/yageek/lambertgo"
+import "fmt"
+
+//Declares origin point
+var point *lgo.Point= &lgo.Point{2.228389, 48.824054,0,lgo.Degree}
+
+//Converts to Radian
+point.ToRadian()
+
+//Converts pointOrg in WGS84 to Lambert Zone 1  - Results in Meter
+point.ToLambert(lgo.LambertI)
+
+
+fmt.Printf("X:%.5f - Y:%.5f",point.X,point.Y)
 ```

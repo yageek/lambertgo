@@ -41,7 +41,7 @@ func (pt *Point) ToDegree() {
 	pt.Unit = Degree
 }
 
-// ToGrad converts the coordinates from Degree or Radian to Degree.
+// ToGrad converts the coordinates from Degree or Radian to Gradian.
 func (pt *Point) ToGrad() {
 	switch pt.Unit {
 	case Radian:
@@ -54,7 +54,7 @@ func (pt *Point) ToGrad() {
 	pt.Unit = Grad
 }
 
-// ToRadian converts the coordinates from Degree or Grad to Degree.
+// ToRadian converts the coordinates from Degree or Grad to Radian.
 func (pt *Point) ToRadian() {
 	switch pt.Unit {
 	case Grad:

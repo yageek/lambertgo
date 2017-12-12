@@ -168,6 +168,118 @@ func TestBugLambertIIE(t *testing.T) {
 	}
 }
 
+func TestZenithStrasbourgToLambertI(t *testing.T) {
+
+	ptExpected := &Point{994300.623, 113409.981, 0, Meter}
+	ptOrigin := &Point{7.68639475277068, 48.5953456709144, 0, Degree}
+
+	ptOrigin.ToRadian()
+	ptOrigin.ToLambert(LambertI)
+
+	if math.Abs(ptOrigin.X-ptExpected.X) > 50 {
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", ptExpected.X, ptOrigin.X)
+	}
+	if math.Abs(ptOrigin.Y-ptExpected.Y) > 50 {
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", ptExpected.Y, ptOrigin.Y)
+	}
+}
+
+func TestToLambertIToWGS84(t *testing.T) {
+
+	var pointTest = &Point{2.228389, 48.824054, 0, Degree}
+	var point = &Point{2.228389, 48.824054, 0, Degree}
+	point.ToRadian()
+	point.ToLambert(LambertI)
+	point.ToWGS84(LambertI)
+	point.ToDegree()
+	if math.Abs(point.X-pointTest.X) > 1e-3 {
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
+	}
+	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
+	}
+}
+
+func TestToLambertIIToWGS84(t *testing.T) {
+
+	var pointTest = &Point{2.228389, 48.824054, 0, Degree}
+	var point = &Point{2.228389, 48.824054, 0, Degree}
+	point.ToRadian()
+	point.ToLambert(LambertII)
+	point.ToWGS84(LambertII)
+	point.ToDegree()
+	if math.Abs(point.X-pointTest.X) > 1e-3 {
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
+	}
+	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
+	}
+}
+
+func TestToLambertIIIToWGS84(t *testing.T) {
+
+	var pointTest = &Point{2.228389, 48.824054, 0, Degree}
+	var point = &Point{2.228389, 48.824054, 0, Degree}
+	point.ToRadian()
+	point.ToLambert(LambertIII)
+	point.ToWGS84(LambertIII)
+	point.ToDegree()
+	if math.Abs(point.X-pointTest.X) > 1e-3 {
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
+	}
+	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
+	}
+}
+
+func TestToLambertIVToWGS84(t *testing.T) {
+
+	var pointTest = &Point{2.228389, 48.824054, 0, Degree}
+	var point = &Point{2.228389, 48.824054, 0, Degree}
+	point.ToRadian()
+	point.ToLambert(LambertIV)
+	point.ToWGS84(LambertIV)
+	point.ToDegree()
+	if math.Abs(point.X-pointTest.X) > 1e-3 {
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
+	}
+	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
+	}
+}
+
+func TestToLambertIIEToWGS84(t *testing.T) {
+
+	var pointTest = &Point{2.228389, 48.824054, 0, Degree}
+	var point = &Point{2.228389, 48.824054, 0, Degree}
+	point.ToRadian()
+	point.ToLambert(LambertIIE)
+	point.ToWGS84(LambertIIE)
+	point.ToDegree()
+	if math.Abs(point.X-pointTest.X) > 1e-3 {
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
+	}
+	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
+	}
+}
+
+func TestToLambert93ToWGS84(t *testing.T) {
+
+	var pointTest = &Point{2.228389, 48.824054, 0, Degree}
+	var point = &Point{2.228389, 48.824054, 0, Degree}
+	point.ToRadian()
+	point.ToLambert(Lambert93)
+	point.ToWGS84(Lambert93)
+	point.ToDegree()
+	if math.Abs(point.X-pointTest.X) > 1e-3 {
+		t.Errorf("Longitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.X, point.X)
+	}
+	if math.Abs(point.Y-pointTest.Y) > 1e-3 {
+		t.Errorf("Latitude too far from expected - Expected : %.11f - Computed : %.11f", pointTest.Y, point.Y)
+	}
+}
+
 func ExamplePoint_ToWGS84() {
 
 	var point = &Point{668832.5384, 6950138.7285, 0, Meter}
@@ -175,4 +287,33 @@ func ExamplePoint_ToWGS84() {
 	fmt.Printf("Latitude:%5f - Longitude:%.5f", point.Y, point.X)
 	// Output:
 	// Latitude:0.866549 - Longitude:0.04483
+}
+
+func ExamplePoint_ToLambert93() {
+
+	var point = &Point{2.228389, 48.824054, 0, Degree}
+	point.ToRadian()
+	point.ToLambert(Lambert93)
+	fmt.Printf("X:%5f - Y:%.5f", point.X, point.Y)
+	// Output:
+	// X:643349.551264 - Y:6858498.18110
+}
+
+func ExamplePoint_ToLambertI() {
+
+	var point = &Point{0.14551209900, 0.87266462600, 0, Radian}
+	point.ToLambert(LambertI)
+	fmt.Printf("X:%3f - Y:%.3f", point.X, point.Y)
+	// Output:
+	// X:1029705.081876 - Y:272723.847
+}
+
+func ExamplePoint_ToLambertIIE() {
+
+	var point = &Point{2.228389, 48.824054, 0, Degree}
+	point.ToRadian()
+	point.ToLambert(LambertIIE)
+	fmt.Printf("X:%5f - Y:%.5f", point.X, point.Y)
+	// Output:
+	// X:592003.510993 - Y:2425072.40421
 }

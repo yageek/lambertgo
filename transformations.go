@@ -45,6 +45,23 @@ func (pt *Point) lambertToGeographic(zone Zone, lonMerid float64, e float64, eps
 	pt.Y = lat
 }
 
+func (pt *Point) geographicToLambert(zone Zone, lonMerid float64, e float64, eps float64) {
+
+	n := lambertN[zone]
+	C := lambertC[zone]
+	xs := lambertXs[zone]
+	ys := lambertYs[zone]
+	lon := pt.X
+	lat := pt.Y
+
+	latIso := latitudeISOFromLatitude(lat, e)
+	x := xs + C*math.Exp(-n*latIso)*math.Sin(n*(lon-lonMerid))
+	y := ys - C*math.Exp(-n*latIso)*math.Cos(n*(lon-lonMerid))
+
+	pt.X = x
+	pt.Y = y
+}
+
 func lambertNormal(lat float64, a float64, e float64) float64 {
 
 	sina := math.Sin(lat)
@@ -114,7 +131,22 @@ func (pt *Point) ToWGS84(zone Zone) {
 		pt.Z += 320
 
 		pt.cartesianToGeographic(GreenwichLongitudeMeridian, AWGS84, EWGS84, DefaultEPS)
-
 	}
+}
 
+// ToLambert converts coordinates expressed in Radian in the WGS84 system to Meter in the lambert system.
+// It takes the lambert Zone in parameters.
+func (pt *Point) ToLambert(zone Zone) {
+
+	if pt.Unit != Radian {
+		fmt.Println("Could not transform Point which is not in Radian")
+		return
+	}
+	if Lambert93 == zone {
+		pt.geographicToLambert(zone, IERSLongitudeMeridian, EWGS84, DefaultEPS)
+		pt.Unit = Meter
+	} else {
+		pt.geographicToLambert(zone, GreenwichLongitudeMeridian, EClarkIGN, DefaultEPS)
+		pt.Unit = Meter
+	}
 }
